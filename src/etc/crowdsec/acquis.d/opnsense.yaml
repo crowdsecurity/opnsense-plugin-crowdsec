@@ -8,6 +8,6 @@
 #
 
 filenames:
- - /var/log/*/latest.log
+ - /var/log/*/*.log
 labels:
   type: syslog
