@@ -392,8 +392,14 @@ var CrowdSec = (function() {
 
         $('[data-toggle="tooltip"]').tooltip();
 
-        // activate a tab from the hash, if it exists (if it doesn't, noop)
-        $(window.location.hash+'_tab').click();
+        if (window.location.hash) {
+            // activate a tab from the hash, if it exists
+            $(window.location.hash+'_tab').click();
+        } else {
+            // otherwise, machines
+            $('#machines_tab').click();
+        }
+
         $(window).on('hashchange', function(e) {
             $(window.location.hash+'_tab').click();
         });
