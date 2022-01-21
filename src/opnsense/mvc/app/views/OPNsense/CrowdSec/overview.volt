@@ -172,6 +172,7 @@ ul.nav>li>a {
 
     <div id="alerts" class="tab-pane fade in">
         Note: the decisions coming from the CAPI (signals collected by the CrowdSec users) do not appear here.
+        To show them, use <code>cscli decisions list -a</code> from the shell.
         <table class="table table-condensed table-hover table-striped">
             <thead>
                 <tr>
