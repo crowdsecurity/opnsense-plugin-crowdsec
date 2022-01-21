@@ -121,17 +121,8 @@
             <a class="btn btn-default btn-info" href="https://discord.com/invite/wGN7ShmEE8">
                 Discord
             </a>
-            <a class="btn btn-default btn-info" href="https://gitter.im/crowdsec-project/community">
-                Gitter
-            </a>
-            <a class="btn btn-default btn-info" href="https://www.reddit.com/r/CrowdSec/">
-                Reddit
-            </a>
             <a class="btn btn-default btn-info" href="https://twitter.com/Crowd_Security">
                 Twitter
-            </a>
-            <a class="btn btn-default btn-info" href="https://www.youtube.com/channel/UCKhMjrV_Y2ws3gTW-SsxFkA">
-                YouTube
             </a>
         </div>
     </div>
