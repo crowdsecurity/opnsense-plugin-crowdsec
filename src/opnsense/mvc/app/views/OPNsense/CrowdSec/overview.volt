@@ -51,8 +51,6 @@ ul.nav>li>a {
 <div class="tab-content content-box">
 
     <div id="machines" class="tab-pane fade in">
-        All the <a href="https://docs.crowdsec.net/docs/user_guides/machines_mgmt">machines</a> registered
-        to the Local API.
         <table class="table table-condensed table-hover table-striped">
             <thead>
                 <tr>
@@ -113,7 +111,6 @@ ul.nav>li>a {
     </div>
 
     <div id="scenarios" class="tab-pane fade in">
-        <a href="https://docs.crowdsec.net/docs/scenarios/intro">Scenarios</a> define attack behaviors.
         <table class="table table-condensed table-hover table-striped">
             <thead>
                 <tr>
@@ -174,6 +171,8 @@ ul.nav>li>a {
     </div>
 
     <div id="alerts" class="tab-pane fade in">
+        Note: the decisions coming from the CAPI (signals collected by the CrowdSec users) do not appear here.
+        To show them, use <code>cscli decisions list -a</code> from the shell.
         <table class="table table-condensed table-hover table-striped">
             <thead>
                 <tr>
