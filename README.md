@@ -1,4 +1,7 @@
 
+Beware
+------
+
 This OPNsense plugin is still under testing before GA release.
 
 Feel free to try it but note that
@@ -6,7 +9,7 @@ Feel free to try it but note that
  * It has been tested with 21.7 and 22.1, but you have to disable circular logs under 21.7
 
  * you need to install the latest crowdsec and crowdsec-firewall-bouncer from this repository (see under Releases)
-   because they are not yet available in the upstream repository.
+   because they are not yet available in the upstream repositories.
 
  * Don't expect many features on the web interface. Feel free to give us a feel of your priorities. The command line
    should work the same as under Linux.
@@ -37,7 +40,7 @@ following order but do *not* enable them like the post-install message says:
 ...
 ```
 
- * Login to OPNsense (web page, this time) and open Services/CrowdSec/Settings
+ * Login to OPNsense (web page, this time) and open Services/CrowdSec/Settings.
 
  * Read Introduction. Under the Settings tab, enable both checkboxes and save. Check Services/CrowdSec/Overview.
 
