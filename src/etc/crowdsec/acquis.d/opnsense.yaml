@@ -1,0 +1,13 @@
+#
+# Before 22.1, OPNsense used binary circular logs under /var/log/*.log that
+# can still be around. They are old, in binary format and are not needed by crowdsec.
+#
+# For this reason we don't scan /var/log/*.log, but some plugins can write
+# their (plaintext) logs in that location, in shich case add their pathnames
+# after latest.log.
+#
+
+filenames:
+ - /var/log/*/latest.log
+labels:
+  type: syslog

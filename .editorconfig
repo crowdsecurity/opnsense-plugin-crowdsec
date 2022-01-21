@@ -1,0 +1,16 @@
+root = true
+
+[*]
+indent_style = space
+end_of_line = lf
+charset = utf-8
+insert_final_newline = true
+
+[*.{js,py,php,inc,volt}]
+indent_size = 4
+trim_trailing_whitespace = true
+
+[*.xml]
+indent_size = 2
+trim_trailing_whitespace = false
+

@@ -1,0 +1,14 @@
+<form>
+   <field>
+      <id>general.agent_enabled</id>
+      <label>Enable CrowdSec Agent</label>
+      <type>checkbox</type>
+      <help>Enable or disable the CrowdSec Agent/Local API</help>
+   </field>
+   <field>
+      <id>general.firewall_bouncer_enabled</id>
+      <label>Enable CrowdSec Firewall Bouncer</label>
+      <type>checkbox</type>
+      <help>Enable or disable the firewall bouncer.</help>
+   </field>
+</form>

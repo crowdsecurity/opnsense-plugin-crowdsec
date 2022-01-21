@@ -1,0 +1,3 @@
+oscrowdsec.rc.conf.d:/etc/rc.conf.d/oscrowdsec
+crowdsec.rc.conf.d:/etc/rc.conf.d/crowdsec
+crowdsec_firewall.rc.conf.d:/etc/rc.conf.d/crowdsec_firewall
