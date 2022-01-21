@@ -15,3 +15,32 @@ Feel free to try it but note that
    supporting OPNsense plugins may require modifying the existing parsers or writing new ones. We did that for SSH
    and the web interface, let us know what else you want us to protect on your firewall.
 
+
+Installation
+------------
+
+To install the plugin you need OPNsense 21.7 or 22.1, then download:
+
+ * crowdsec-1.2.3.txz
+ * crowdsec-firewall-bouncer-0.0.22.txz
+ * os-crowdsec-0.0.2.txz
+
+Copy them to your firewall instance with scp, then install the packages in the
+following order but do *not* enable them like the post-install message says:
+
+```
+# pkg add crowdsec-1.2.3.txz
+...
+# pkg add crowdsec-firewall-bouncer-0.0.22.txz
+...
+# pkg add os-crowdsec-0.0.2.txz
+...
+```
+
+ * Login to OPNsense (web page, this time) and open Services/CrowdSec/Settings
+
+ * Read Introduction. Under the Settings tab, enable both checkboxes and save. Check Services/CrowdSec/Overview.
+
+ * Optional, but recommended: [register to the Console](https://app.crowdsec.net/).
+   This helps you to manage your instances, and us to have better overall metrics.
+

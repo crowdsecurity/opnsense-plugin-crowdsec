@@ -72,6 +72,7 @@
             <li>
                 If your OPNsense is &lt;22.1, you must check "Disable circular logs" in the Settings menu for the
                 ssh and web-auth parsers to work. If you upgrade to 22.1, it will be done automatically.
+                See <a href="https://github.com/crowdsecurity/opnsense-plugin-crowdsec/blob/main/src/etc/crowdsec/acquis.d/opnsense.yaml">acquis.d/opnsense.yaml</a>
             </li>
             <li>
                 At the moment, the CrowdSec package for OPNsense is fully functional on the
