@@ -9,7 +9,7 @@ Feel free to try it but note that
  * It has been tested with 21.7 and 22.1, but you have to disable circular logs under 21.7
 
  * you need to install the latest crowdsec and crowdsec-firewall-bouncer from this repository (see under Releases)
-   because they are not yet available in the upstream repositories.
+   because they are not yet available in the upstream repositories. Previous versions won't work properly.
 
  * Don't expect many features on the web interface. Feel free to give us a feel of your priorities. The command line
    should work the same as under Linux.
@@ -24,24 +24,24 @@ Installation
 
 To install the plugin you need OPNsense 21.7 or 22.1, then download:
 
- * crowdsec-1.2.3.txz
- * crowdsec-firewall-bouncer-0.0.22.txz
- * os-crowdsec-0.0.2.txz
+ * crowdsec-1.2.3_1.txz
+ * crowdsec-firewall-bouncer-0.0.22_1.txz
+ * os-crowdsec-0.0.3.txz
 
 You find them in the
 [Releases](https://github.com/crowdsecurity/opnsense-plugin-crowdsec/releases)
-page, under "Assets". For example, `opnsense_21.7-crowdsec_0.0.2.tar` contains
+page, under "Assets". For example, `opnsense_22.1-freebsd_13-oscrowdsec_0.0.3.tar` contains
 the three files listed above.
 
 Copy them to your firewall instance with scp, then install the packages in the
 following order but do *not* enable them like the post-install message says:
 
 ```
-# pkg add crowdsec-1.2.3.txz
+# pkg add crowdsec-1.2.3_1.txz
 ...
-# pkg add crowdsec-firewall-bouncer-0.0.22.txz
+# pkg add crowdsec-firewall-bouncer-0.0.22_1.txz
 ...
-# pkg add os-crowdsec-0.0.2.txz
+# pkg add os-crowdsec-0.0.3.txz
 ...
 ```
 
