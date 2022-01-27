@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Removing the plugin from the web interface will autoremove the dependencies
+# too, and here we have to delete the files in rc.conf.d (because they are
+# generated from templates when the configuration is saved, and the package
+# system did not keep track of them).
+
+# But.. If the plugin is removed from the command line (which does not happen
+# outside of testing conditions), the crowdsec and bouncer services will not be
+# removed. However, since we deleted the files that enabled these services,
+# they will be disabled at the next reboot.
+
+rm -f /etc/rc.conf.d/crowdsec \
+      /etc/rc.conf.d/crowdsec_firewall \
+      /etc/rc.conf.d/oscrowdsec
+
