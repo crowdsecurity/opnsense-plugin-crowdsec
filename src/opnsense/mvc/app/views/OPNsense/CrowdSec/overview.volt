@@ -57,7 +57,7 @@ ul.nav>li>a {
                   <th data-column-id="name">Name</th>
                   <th data-column-id="ip_address">IP Address</th>
                   <th data-column-id="last_update" data-formatter="datetime">Last Update</th>
-                  <th data-column-id="status" data-formatter="yesno" data-searchable="false">Validated?</th>
+                  <th data-column-id="validated" data-formatter="yesno" data-searchable="false">Validated?</th>
                   <th data-column-id="version">Version</th>
                 </tr>
             </thead>
@@ -96,7 +96,7 @@ ul.nav>li>a {
             <thead>
                 <tr>
                   <th data-column-id="name">Name</th>
-                  <th data-column-id="status" data-formatter="yesno" data-searchable="false">Enabled?</th>
+                  <th data-column-id="status">Status</th>
                   <th data-column-id="local_version">Version</th>
                   <th data-column-id="local_path">Local Path</th>
                 </tr>
@@ -115,7 +115,7 @@ ul.nav>li>a {
             <thead>
                 <tr>
                   <th data-column-id="name">Name</th>
-                  <th data-column-id="status" data-formatter="yesno" data-searchable="false">Enabled?</th>
+                  <th data-column-id="status">Status</th>
                   <th data-column-id="local_version">Version</th>
                   <th data-column-id="local_path">Path</th>
                   <th data-column-id="description">Description</th>
@@ -135,7 +135,7 @@ ul.nav>li>a {
             <thead>
                 <tr>
                   <th data-column-id="name">Name</th>
-                  <th data-column-id="status" data-formatter="yesno" data-searchable="false">Enabled?</th>
+                  <th data-column-id="status">Status</th>
                   <th data-column-id="local_version">Version</th>
                   <th data-column-id="local_path">Local Path</th>
                   <th data-column-id="description">Description</th>
@@ -155,7 +155,7 @@ ul.nav>li>a {
             <thead>
                 <tr>
                   <th data-column-id="name">Name</th>
-                  <th data-column-id="status" data-formatter="yesno" data-searchable="false">Enabled?</th>
+                  <th data-column-id="status">Status</th>
                   <th data-column-id="local_version">Version</th>
                   <th data-column-id="local_path">Local Path</th>
                   <th data-column-id="description">Description</th>

@@ -207,7 +207,7 @@ var CrowdSec = (function() {
                     name:        row.machineId,
                     ip_address:  row.ipAddress || ' ',
                     last_update: row.updated_at || ' ',
-                    status:      row.isValidated,
+                    validated:   row.isValidated,
                     version:     row.version || ' '
                 });
             });
@@ -223,7 +223,7 @@ var CrowdSec = (function() {
             data.collections.map(function(row) {
                 rows.push({
                     name:          row.name,
-                    status:        row.status==="enabled",
+                    status:        row.status,
                     local_version: row.local_version || ' ',
                     local_path:    row.local_path || ' '
                 });
@@ -240,7 +240,7 @@ var CrowdSec = (function() {
             data.scenarios.map(function(row) {
                 rows.push({
                     name:          row.name,
-                    status:        row.status==="enabled",
+                    status:        row.status,
                     local_version: row.local_version || ' ',
                     local_path:    row.local_path || ' ',
                     description:   row.description || ' '
@@ -258,7 +258,7 @@ var CrowdSec = (function() {
             data.parsers.map(function(row) {
                 rows.push({
                     name:          row.name,
-                    status:        row.status==="enabled",
+                    status:        row.status,
                     local_version: row.local_version || ' ',
                     local_path:    row.local_path || ' ',
                     description:   row.description || ' '
@@ -276,7 +276,7 @@ var CrowdSec = (function() {
             data.postoverflows.map(function(row) {
                 rows.push({
                     name:          row.name,
-                    status:        row.status==="enabled",
+                    status:        row.status,
                     local_version: row.local_version || ' ',
                     local_path:    row.local_path || ' ',
                     description:   row.description || ' '
