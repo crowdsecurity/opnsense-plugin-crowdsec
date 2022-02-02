@@ -26,7 +26,7 @@ To install the plugin you need OPNsense 21.7 or 22.1, then download:
 
  * crowdsec-1.2.3_1.txz
  * crowdsec-firewall-bouncer-0.0.22_1.txz
- * os-crowdsec-0.0.3.txz
+ * os-crowdsec-0.0.4.txz
 
 You find them in the
 [Releases](https://github.com/crowdsecurity/opnsense-plugin-crowdsec/releases)
