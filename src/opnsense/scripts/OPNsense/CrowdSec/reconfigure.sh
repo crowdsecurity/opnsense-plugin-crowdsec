@@ -17,7 +17,9 @@ set -e
 /usr/local/opnsense/scripts/OPNsense/CrowdSec/hub-upgrade.sh
 
 # crowdsec was already restarted by hub-upgrade.sh
-service crowdsec_firewall enabled && service crowdsec_firewall restart >/dev/null
+if service crowdsec_firewall enabled; then
+    ( service crowdsec_firewall restart || service crowdsec_firewall start ) >/dev/null
+fi
 
 echo "OK"
 

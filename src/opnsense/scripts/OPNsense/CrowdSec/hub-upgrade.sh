@@ -7,5 +7,7 @@ fi
 /usr/local/bin/cscli --error hub update \
     && /usr/local/bin/cscli --error hub upgrade
 
-service crowdsec enabled && service crowdsec restart
+if service crowdsec enabled; then
+    ( service crowdsec restart || service crowdsec start ) >/dev/null
+fi
 
