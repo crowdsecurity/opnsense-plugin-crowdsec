@@ -63,3 +63,12 @@ Download the new version and use "pkg upgrade" instead of "pkg add".
 You can also use "pkg remove crowdsec crowdsec-firewall-bouncer oscrowdsec"
 followed by the three "pkg add", but respect the installation order.
 
+
+Changelog
+---------
+
+v0.0.5
+
+ - fixed an issue that prevented the bouncer from banning IPs on opnsense
+ - fixed support for notification plugins
+
