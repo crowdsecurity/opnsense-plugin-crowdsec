@@ -30,5 +30,4 @@ class AlertsController extends ApiControllerBase
         }
         return array("message" => "unable to list alerts");
     }
-
 }

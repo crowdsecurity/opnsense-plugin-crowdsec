@@ -30,5 +30,4 @@ class CollectionsController extends ApiControllerBase
         }
         return array("message" => "unable to list collections");
     }
-
 }

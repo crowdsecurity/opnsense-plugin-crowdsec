@@ -30,5 +30,4 @@ class BouncersController extends ApiControllerBase
         }
         return array("message" => "unable to list bouncers");
     }
-
 }

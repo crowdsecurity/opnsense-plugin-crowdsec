@@ -40,7 +40,7 @@ class DecisionsController extends ApiControllerBase
                 // why does the action return \n\n for empty output?
                 if (trim($bckresult) === '') {
                     return array("message" => "OK");
-                };
+                }
                 // TODO handle error
                 return array("message" => $bckresult);
             }
@@ -50,5 +50,4 @@ class DecisionsController extends ApiControllerBase
             $this->response->setHeader("Allow", "DELETE");
         }
     }
-
 }

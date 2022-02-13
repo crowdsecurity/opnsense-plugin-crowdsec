@@ -30,5 +30,4 @@ class MachinesController extends ApiControllerBase
         }
         return array("message" => "unable to list machines");
     }
-
 }

@@ -30,5 +30,4 @@ class ParsersController extends ApiControllerBase
         }
         return array("message" => "unable to list parsers");
     }
-
 }

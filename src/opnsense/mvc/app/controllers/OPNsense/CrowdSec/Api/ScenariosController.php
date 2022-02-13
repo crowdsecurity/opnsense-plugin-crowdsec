@@ -30,5 +30,4 @@ class ScenariosController extends ApiControllerBase
         }
         return array("message" => "unable to list scenarios");
     }
-
 }

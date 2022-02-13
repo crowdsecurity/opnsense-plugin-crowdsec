@@ -5,6 +5,7 @@ import yaml
 agent_config_path = '/usr/local/etc/crowdsec/config.yaml'
 bouncer_config_path = '/usr/local/etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml'
 
+
 def configure_agent():
     with open(agent_config_path) as fin:
         config = yaml.safe_load(fin)

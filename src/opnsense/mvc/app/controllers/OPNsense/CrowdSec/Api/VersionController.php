@@ -25,5 +25,4 @@ class VersionController extends ApiControllerBase
         $backend = new Backend();
         return $backend->configdRun("crowdsec version");
     }
-
 }
