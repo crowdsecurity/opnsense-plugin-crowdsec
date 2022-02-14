@@ -21,6 +21,9 @@ def configure_bouncer():
         config = yaml.safe_load(fin)
 
     config['log_dir'] = '/var/log/crowdsec'
+    config['blacklists_ipv4'] = 'crowdsec_blacklists'
+    config['blacklists_ipv6'] = 'crowdsec6_blacklists'
+    config['pf'] = {'anchor_name': ''}
 
     with open(bouncer_config_path, 'w') as fout:
         yaml.dump(config, fout)
