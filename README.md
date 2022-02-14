@@ -114,6 +114,16 @@ pf:
 
 You should now be able to see the blocked IPs in Firewall -> Diagnostics -> Aliases.
 
+A quick way to test that everything is working correctly is to execute the
+following command. Your ssh session should freeze and kick you out. You will
+not be able to connect to the firewall from the same IP address for two
+minutes. It might be a good idea to have a secondary IP from which you can
+connect, should anything go wrong.
+
+```
+# cscli decisions add -t ban -d 2m -i `echo $SSH_CLIENT | cut -d' ' -f1`
+```
+
 
 
 Upgrade
