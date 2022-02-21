@@ -3,11 +3,13 @@
 # can still be around. They are old, in binary format and are not needed by crowdsec.
 #
 # For this reason we don't scan /var/log/*.log, but some plugins can write
-# their (plaintext) logs in that location, in shich case add their pathnames
-# after latest.log.
+# their (plaintext) logs in that location, in such case add their pathnames too.
 #
 
 filenames:
- - /var/log/*/*.log
+ # ssh
+ - /var/log/audit/*.log
+ # web admin
+ - /var/log/lighttpd/*.log
 labels:
   type: syslog
