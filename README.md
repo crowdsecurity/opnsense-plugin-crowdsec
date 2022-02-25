@@ -43,11 +43,11 @@ For now, to install it you need OPNsense 21.7 or 22.1, then download:
 
  * crowdsec-1.3.1.r1.txz
  * crowdsec-firewall-bouncer-0.0.23.r2.txz
- * os-crowdsec-0.0.6.txz
+ * os-crowdsec-0.0.7.txz
 
 You find them in the
 [Releases](https://github.com/crowdsecurity/opnsense-plugin-crowdsec/releases)
-page, under "Assets". For example, `opnsense_22.1-freebsd_13-oscrowdsec_0.0.6.tar` contains
+page, under "Assets". For example, `opnsense_22.1-freebsd_13-oscrowdsec_0.0.7.tar` contains
 the three files listed above.
 
 Copy them to your firewall instance with scp, then install the packages in the
@@ -59,7 +59,7 @@ These instruction are for using them without OPNsense.
 ...
 # pkg add ./crowdsec-firewall-bouncer-0.0.23.r2.txz
 ...
-# pkg add ./os-crowdsec-0.0.6.txz
+# pkg add ./os-crowdsec-0.0.7.txz
 ...
 ```
 
@@ -108,13 +108,16 @@ Uninstalling
 If you want to completely remove the plugin and all its configuration, uninstall
 it from the admin interface, then:
 
- - remove the two Alias objects `crowdsec_blacklists` and `crowdsec6_blacklists`
  - `pkg remove crowdsec crowdsec-firewall-bouncer`
  - `rm -rf /var/log/crowdsec /usr/local/etc/crowdsec`
 
 
 Changelog
 ---------
+
+v0.0.7
+
+ - automated removal of Alias objects when the plugin is uninstalled
 
 v0.0.6
 
