@@ -4,6 +4,8 @@
 // SPDX-FileCopyrightText: © 2021 CrowdSec <info@crowdsec.net>
 
 use OPNsense\Core\Config;
+use OPNsense\Firewall\Alias;
+use OPNsense\Firewall\Plugin;
 
 function bouncer_enabled()
 {
@@ -14,11 +16,10 @@ function bouncer_enabled()
 }
 
 function add_alias_if_not_exist($name, $description, $proto) {
-    $model = new OPNsense\Firewall\Alias();
-    foreach ($model->aliases->alias->iterateItems() as $alias) {
-        if ((string)$alias->name == $name) {
-            return;
-        }
+    $model = new Alias();
+
+    if ($model->getByName($name) != null) {
+        return;
     }
 
     $new_alias = $model->aliases->alias->Add();
@@ -30,7 +31,7 @@ function add_alias_if_not_exist($name, $description, $proto) {
     Config::getInstance()->save();
 }
 
-function crowdsec_firewall(\OPNsense\Firewall\Plugin $fw)
+function crowdsec_firewall(Plugin $fw)
 {
     if (!bouncer_enabled()) {
         return;
@@ -41,11 +42,11 @@ function crowdsec_firewall(\OPNsense\Firewall\Plugin $fw)
     $fw->registerFilterRule(
         1, /* priority */
         array(
-            'ipprotocol'     => 'inet',
-            'descr'          => 'CrowdSec (IPv4)',
-            'from'           => '$crowdsec_blacklists',     # $ to reference an alias
-            'type'           => 'block',
-            'quick'          => true
+            'ipprotocol' => 'inet',
+            'descr'      => 'CrowdSec (IPv4)',
+            'from'       => '$crowdsec_blacklists',     # $ to reference an alias
+            'type'       => 'block',
+            'quick'      => true
         ),
         null
     );
@@ -55,11 +56,11 @@ function crowdsec_firewall(\OPNsense\Firewall\Plugin $fw)
     $fw->registerFilterRule(
         1, /* priority */
         array(
-            'ipprotocol'     => 'inet6',
-            'descr'          => 'CrowdSec (IPv6)',
-            'from'           => '$crowdsec6_blacklists',    # $ to reference an alias
-            'type'           => 'block',
-            'quick'          => true
+            'ipprotocol' => 'inet6',
+            'descr'      => 'CrowdSec (IPv6)',
+            'from'       => '$crowdsec6_blacklists',    # $ to reference an alias
+            'type'       => 'block',
+            'quick'      => true
         ),
         null
     );
@@ -71,8 +72,8 @@ function crowdsec_services()
         'description' => 'CrowdSec',
         'configd' => array(
             'restart' => array('crowdsec restart'),
-            'start' => array('crowdsec start'),
-            'stop' => array('crowdsec stop'),
+            'start'   => array('crowdsec start'),
+            'stop'    => array('crowdsec stop'),
         ),
         'name' => 'crowdsec'
     );

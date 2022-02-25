@@ -14,3 +14,37 @@ rm -f /etc/rc.conf.d/crowdsec \
       /etc/rc.conf.d/crowdsec_firewall \
       /etc/rc.conf.d/oscrowdsec
 
+
+# Remove aliases and with them, the rules. We don't have plugin files
+# anymore so we do that on the fly.
+
+/usr/local/bin/php <<'EOT'
+<?php
+
+@include_once("config.inc");
+@include_once("certs.inc");
+@include_once("util.inc");
+
+use OPNsense\Firewall\Alias;
+use OPNsense\Core\Config;
+
+function removeAlias($name)
+{
+    $model = new Alias();
+    foreach ($model->aliases->alias->iterateItems() as $index => $alias) {
+        if (strval($alias->name) == $name) {
+            if ($model->aliases->alias->del($index)) {
+                $model->serializeToConfig();
+                Config::getInstance()->save();
+            }
+        }
+    }
+}
+
+removeAlias('crowdsec_blacklists');
+removeAlias('crowdsec6_blacklists');
+EOT
+
+
+# apply the configuration changes to the packet filter
+configctl filter reload
