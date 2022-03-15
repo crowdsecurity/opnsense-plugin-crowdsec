@@ -28,7 +28,7 @@ Feel free to try it but note that
 Installation
 ------------
 
-> If you have previously used v0.0.5, you had to create a couple of Alias and
+> If you are upgrading from v0.0.5, you had to create a couple of Alias and
 > related Rules objects in the admin interface. This is not necessary anymore.
 > It's a good idea to remove them before upgrading, to avoid any conflict and
 > test the new automated configuration. You can do that under Firewall -> Aliases
@@ -41,9 +41,9 @@ Once the plugin is released, you will be able to install it from the OPNsense ad
 
 For now, to install it you need OPNsense 21.7 or 22.1, then download:
 
- * crowdsec-1.3.1.r1.txz
+ * crowdsec-1.3.2.r1.txz
  * crowdsec-firewall-bouncer-0.0.23.r2.txz
- * os-crowdsec-0.0.7.txz
+ * os-crowdsec-0.0.8.txz
 
 You find them in the
 [Releases](https://github.com/crowdsecurity/opnsense-plugin-crowdsec/releases)
@@ -55,7 +55,7 @@ following order but do *not* enable them like the post-install messages say.
 These instruction are for using them without OPNsense.
 
 ```
-# pkg add ./crowdsec-1.3.1.r1.txz
+# pkg add ./crowdsec-1.3.2.r1.txz
 ...
 # pkg add ./crowdsec-firewall-bouncer-0.0.23.r2.txz
 ...
@@ -114,6 +114,11 @@ it from the admin interface, then:
 
 Changelog
 ---------
+
+v0.0.8
+
+ - crowdsec update 1.3.2
+ - configurable `rules_log` and LAPI address/port
 
 v0.0.7
 

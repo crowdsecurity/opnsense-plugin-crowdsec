@@ -9,7 +9,7 @@ fi
 
 if service crowdsec enabled; then
     # have to check status explicitly because "restart" can set $? = 0 even when failing
-    if service crowdsec status >/dev/null 2>&1; then
+    if ! service crowdsec status >/dev/null 2>&1; then
         service crowdsec start >/dev/null 2>&1 || :
     else
         service crowdsec restart >/dev/null 2>&1 || :
