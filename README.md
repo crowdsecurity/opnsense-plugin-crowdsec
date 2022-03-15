@@ -89,6 +89,10 @@ connect, should anything go wrong.
 # cscli decisions add -t ban -d 2m -i `echo $SSH_CLIENT | cut -d' ' -f1`
 ```
 
+> Although you have the option to expose the LAPI on a LAN, and add more servers
+> and bouncers, you cannot set up the plugin to use an LAPI on a different
+> server than OPNsense. This will likely be allowed in a future version.
+
 
 Upgrade
 -------
