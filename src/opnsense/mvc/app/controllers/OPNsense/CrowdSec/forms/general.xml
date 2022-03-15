@@ -3,12 +3,37 @@
       <id>general.agent_enabled</id>
       <label>Enable CrowdSec Agent</label>
       <type>checkbox</type>
-      <help>Enable or disable the CrowdSec Agent/Local API</help>
+      <help>Enable/disable the CrowdSec Agent</help>
    </field>
    <field>
       <id>general.firewall_bouncer_enabled</id>
       <label>Enable CrowdSec Firewall Bouncer</label>
       <type>checkbox</type>
-      <help>Enable or disable the firewall bouncer.</help>
+      <help>Enable/disable the firewall bouncer</help>
+   </field>
+   <field>
+      <id>general.rules_log</id>
+      <label>Enable log for rules</label>
+      <type>checkbox</type>
+      <help>Enable log collection for CrowdSec's block rules</help>
+   </field>
+   <field>
+     <id>general.lapi_listen_address</id>
+     <label>LAPI listen address</label>
+     <type>text</type>
+     <help>Where to listen to LAPI connections: address or hostname. This is
+       written in /usr/local/etc/crowdsec/config.yaml,
+       local_api_credentials.yaml and bouncers/crowdsec-firewall-bouncer.yaml.
+       You can change it to a LAN address to connect from other agents/machines
+       and bouncers. To enable TLS, add the certificate information to
+       config.yaml and change http to https in the other two files. Comments in
+       YAML will not be preserved.</help>
+   </field>
+   <field>
+     <id>general.lapi_listen_port</id>
+     <label>LAPI listen port</label>
+     <type>text</type>
+     <help>Where to listen to LAPI connections: port. You can change it to
+       avoid conflicts with existing services.</help>
    </field>
 </form>

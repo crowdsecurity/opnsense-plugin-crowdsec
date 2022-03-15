@@ -28,7 +28,7 @@ Feel free to try it but note that
 Installation
 ------------
 
-> If you have previously used v0.0.5, you had to create a couple of Alias and
+> If you are upgrading from v0.0.5, you had to create a couple of Alias and
 > related Rules objects in the admin interface. This is not necessary anymore.
 > It's a good idea to remove them before upgrading, to avoid any conflict and
 > test the new automated configuration. You can do that under Firewall -> Aliases

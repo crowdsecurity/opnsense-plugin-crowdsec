@@ -7,14 +7,6 @@ use OPNsense\Core\Config;
 use OPNsense\Firewall\Alias;
 use OPNsense\Firewall\Plugin;
 
-function bouncer_enabled()
-{
-    global $config;
-
-    return isset($config['OPNsense']['crowdsec']['general']['firewall_bouncer_enabled']) &&
-    $config['OPNsense']['crowdsec']['general']['firewall_bouncer_enabled'] == 1;
-}
-
 function add_alias_if_not_exist($name, $description, $proto) {
     $model = new Alias();
 
@@ -33,9 +25,17 @@ function add_alias_if_not_exist($name, $description, $proto) {
 
 function crowdsec_firewall(Plugin $fw)
 {
-    if (!bouncer_enabled()) {
+    global $config;
+
+    $general = $config['OPNsense']['crowdsec']['general'];
+
+    $bouncer_enabled = isset($general['firewall_bouncer_enabled']) && $general['firewall_bouncer_enabled'];
+
+    if (!$bouncer_enabled) {
         return;
     }
+
+    $rules_log_enabled = isset($general['rules_log']) && $general['rules_log'];
 
     add_alias_if_not_exist('crowdsec_blacklists', 'CrowdSec (IPv4)', 'IPv4');
 
@@ -46,6 +46,7 @@ function crowdsec_firewall(Plugin $fw)
             'descr'      => 'CrowdSec (IPv4)',
             'from'       => '$crowdsec_blacklists',     # $ to reference an alias
             'type'       => 'block',
+            'log'        => $rules_log_enabled,
             'quick'      => true
         ),
         null
@@ -60,6 +61,7 @@ function crowdsec_firewall(Plugin $fw)
             'descr'      => 'CrowdSec (IPv6)',
             'from'       => '$crowdsec6_blacklists',    # $ to reference an alias
             'type'       => 'block',
+            'log'        => $rules_log_enabled,
             'quick'      => true
         ),
         null
