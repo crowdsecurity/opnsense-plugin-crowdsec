@@ -292,6 +292,7 @@ var CrowdSec = (function() {
         var dataCallback = function(data) {
             var rows = [];
             data.map(function(row) {
+                // TODO - remove || ' ' later, it was fixed for 1.3.3
                 rows.push({
                     name:       row.name,
                     ip_address: row.ip_address || ' ',

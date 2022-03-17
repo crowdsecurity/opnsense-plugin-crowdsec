@@ -26,5 +26,8 @@ if service crowdsec_firewall enabled; then
     fi
 fi
 
+# left from v0.0.8
+rm -f /usr/local/etc/crowdsec/opnsense-settings.json
+
 echo "OK"
 

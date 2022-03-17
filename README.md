@@ -43,7 +43,7 @@ For now, to install it you need OPNsense 21.7 or 22.1, then download:
 
  * crowdsec-1.3.2.txz
  * crowdsec-firewall-bouncer-0.0.23.r2.txz
- * os-crowdsec-0.0.8.txz
+ * os-crowdsec-0.0.9.txz
 
 You find them in the
 [Releases](https://github.com/crowdsecurity/opnsense-plugin-crowdsec/releases)
@@ -118,6 +118,13 @@ it from the admin interface, then:
 
 Changelog
 ---------
+
+v0.0.9
+
+ - fixed the javascript, 0.0.8 had a syntax error
+ - new option: rules_tag
+ - new option: lapi_manual_configuration
+ - ipv4/ipv6 validation with regexp
 
 v0.0.8
 
