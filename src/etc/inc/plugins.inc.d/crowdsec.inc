@@ -37,6 +37,11 @@ function crowdsec_firewall(Plugin $fw)
 
     $rules_log_enabled = isset($general['rules_log']) && $general['rules_log'];
 
+    $rules_tag = "";
+    if (isset($general['rules_tag'])) {
+        $rules_tag = $general['rules_tag'];
+    };
+
     add_alias_if_not_exist('crowdsec_blacklists', 'CrowdSec (IPv4)', 'IPv4');
 
     $fw->registerFilterRule(
@@ -47,6 +52,7 @@ function crowdsec_firewall(Plugin $fw)
             'from'       => '$crowdsec_blacklists',     # $ to reference an alias
             'type'       => 'block',
             'log'        => $rules_log_enabled,
+            'tag'        => $rules_tag,
             'quick'      => true
         ),
         null
@@ -62,6 +68,7 @@ function crowdsec_firewall(Plugin $fw)
             'from'       => '$crowdsec6_blacklists',    # $ to reference an alias
             'type'       => 'block',
             'log'        => $rules_log_enabled,
+            'log'        => $rules_tag,
             'quick'      => true
         ),
         null
