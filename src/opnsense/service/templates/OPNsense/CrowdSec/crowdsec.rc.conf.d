@@ -4,4 +4,4 @@ crowdsec_enable="YES"
 {% else %}
 crowdsec_enable="NO"
 {% endif %}
-crowdsec_flags=""
+crowdsec_flags="{{ OPNsense.crowdsec.general.crowdsec_flags|default("") }}"

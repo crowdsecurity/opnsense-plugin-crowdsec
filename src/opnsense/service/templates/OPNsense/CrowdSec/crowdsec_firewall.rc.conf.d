@@ -4,3 +4,4 @@ crowdsec_firewall_enable="YES"
 {% else %}
 crowdsec_firewall_enable="NO"
 {% endif %}
+crowdsec_firewall_flags="{{ OPNsense.crowdsec.general.crowdsec_firewall_flags|default("") }}"
