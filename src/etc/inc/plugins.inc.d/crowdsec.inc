@@ -68,7 +68,7 @@ function crowdsec_firewall(Plugin $fw)
             'from'       => '$crowdsec6_blacklists',    # $ to reference an alias
             'type'       => 'block',
             'log'        => $rules_log_enabled,
-            'log'        => $rules_tag,
+            'tag'        => $rules_tag,
             'quick'      => true
         ),
         null
