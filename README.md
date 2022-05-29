@@ -96,7 +96,7 @@ These instructions assume you already have set up a central LAPI server that is
 reachable by the OPNSense instance. You will also need SSH access with root permissions
 to both OPNSense and LAPI server.
 
-These instructions largely follow the ones in [Crowdsec Tutorials](https://crowdsec.net/blog/multi-server-setup/)
+These instructions largely follow the ones in [Crowdsec Tutorials.](https://crowdsec.net/blog/multi-server-setup/)
 
 - Register the LAPI server (url is e.g. `http://10.0.0.10:8080`):
 ```
@@ -110,10 +110,11 @@ crowdsec_start()
         ${command} -c "${crowdsec_config}" ${crowdsec_flags} -no-api            
 } 
 ```
-- In the web UI under Settings, change the LAPI Listen address and port according to your LAPI server
-  and click Apply
+- In the web UI under Services->CrowdSec->Settings, change the LAPI Listen address
+  and port according to your LAPI server and click Apply
 - At this stage Crowdsec service will fail to start, you need to validate OPNSense on the LAPI server.
-  Login via SSH and first get the machine ID of OPNSense:
+  Login via SSH and first get the machine ID of OPNSense, then validate the OPNSense machine using
+  the ID from the NAME column from the listing:
 ```
 [root@lapi-server ~]# cscli machines list
 ---------------------------------------------------------------------------------------------------...
@@ -122,11 +123,9 @@ crowdsec_start()
  be689d27c623aa393d1c8604eda5d1b47a62526b2e2e0201  10.0.0.10   2022-05-28T05:21:24Z  ✔️       v1.3.4...
  97f403614b44aa27d60c1ff8adb93d6fae8f9d9697e1a98c  10.0.0.1    2022-05-29T10:03:33Z  🚫             ...                                                                   
 ---------------------------------------------------------------------------------------------------...
-[root@lapi-server ~]# 
-```
-- Then validate the OPNSense machine using the ID from the NAME column from the listing:
-```
-# cscli machines validate 97f403614b44aa27d60c1ff8adb93d6fae8f9d9697e1a98c
+[root@lapi-server ~]# cscli machines validate 97f403614b44aa27d60c1ff8adb93d6fae8f9d9697e1a98c
+INFO[29-05-2022 02:22:43 PM] machine '97f403614b44aa27d60c1ff8adb93d6fae8f9d9697e1a98c' validated successfully
+[root@lapi-server ~]#
 ```
 - Reload Crowdsec on OPNSense, either with `service crowdsec reload` or by clicking Apply
   in the web interface.
@@ -140,13 +139,10 @@ Api key for 'opnsense':
 Please keep this key since you will not be able to retrieve it!
 ```
 - On OPNSense, edit `/usr/local/etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml`
-  and replace `api_key: ` with the output from the previous command on the LAPI server
-- Reload Crowdsec again, either with `service crowdsec reload` or by clicking Apply
+  and replace `api_key: ` with the output from the previous command on the LAPI server.
+  `api_url:` should already be set to your central LAPI server's URL.
+- Restart Crowdsec, either with `service crowdsec restart` or by clicking Apply
   in the web interface.
-
-
-
-
 
 Upgrade
 -------
@@ -159,6 +155,8 @@ Download the new version of the plugin, extract and use "pkg upgrade" instead of
 You can also use "pkg remove crowdsec crowdsec-firewall-bouncer oscrowdsec"
 followed by the three "pkg add", but respect the installation order.
 
+If you are using a remote LAPI server, there's a good chance you'll need to
+repeat some or all the steps from the configuration instructions above.
 
 Uninstalling
 ------------
