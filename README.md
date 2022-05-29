@@ -89,9 +89,63 @@ connect, should anything go wrong.
 # cscli decisions add -t ban -d 2m -i `echo $SSH_CLIENT | cut -d' ' -f1`
 ```
 
-> Although you have the option to expose the LAPI on a LAN, and add more servers
-> and bouncers, you cannot set up the plugin to use an LAPI on a different
-> server than OPNsense. This will likely be allowed in a future version.
+Remote LAPI configuration (optional)
+------------------------------------
+To use an external Local API server, the configuration must be done manually.
+These instructions assume you already have set up a central LAPI server that is
+reachable by the OPNSense instance. You will also need SSH access with root permissions
+to both OPNSense and LAPI server.
+
+These instructions largely follow the ones in [Crowdsec Tutorials](https://crowdsec.net/blog/multi-server-setup/)
+
+- Register the LAPI server (url is e.g. `http://10.0.0.10:8080`):
+```
+# cscli lapi register -u <url>
+```
+- Edit `/usr/local/rc.d/crowdsec`, in `crowdsec_start()` -function, append `-no-api` to the start command:
+```
+crowdsec_start()                                                                
+{                                                                               
+    /usr/sbin/daemon -f -p ${pidfile} -t "${desc}" -- \                         
+        ${command} -c "${crowdsec_config}" ${crowdsec_flags} -no-api            
+} 
+```
+- In the web UI under Settings, change the LAPI Listen address and port according to your LAPI server
+  and click Apply
+- At this stage Crowdsec service will fail to start, you need to validate OPNSense on the LAPI server.
+  Login via SSH and first get the machine ID of OPNSense:
+```
+[root@lapi-server ~]# cscli machines list
+---------------------------------------------------------------------------------------------------...
+ NAME                                              IP ADDRESS     LAST UPDATE           STATUS     ...
+---------------------------------------------------------------------------------------------------...
+ be689d27c623aa393d1c8604eda5d1b47a62526b2e2e0201  10.0.0.10   2022-05-28T05:21:24Z  ✔️       v1.3.4...
+ 97f403614b44aa27d60c1ff8adb93d6fae8f9d9697e1a98c  10.0.0.1    2022-05-29T10:03:33Z  🚫             ...                                                                   
+---------------------------------------------------------------------------------------------------...
+[root@lapi-server ~]# 
+```
+- Then validate the OPNSense machine using the ID from the NAME column from the listing:
+```
+# cscli machines validate 97f403614b44aa27d60c1ff8adb93d6fae8f9d9697e1a98c
+```
+- Reload Crowdsec on OPNSense, either with `service crowdsec reload` or by clicking Apply
+  in the web interface.
+- Next, set up OPNSense as a bouncer on the LAPI server. On the LAPI server (replace `opnsense` with a name you want):
+```
+[root@lapi-server ~]# cscli bouncers add opnsense
+Api key for 'opnsense':
+
+   563e64de5ab7bda490add012bc9ad09b0
+
+Please keep this key since you will not be able to retrieve it!
+```
+- On OPNSense, edit `/usr/local/etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml`
+  and replace `api_key: ` with the output from the previous command on the LAPI server
+- Reload Crowdsec again, either with `service crowdsec reload` or by clicking Apply
+  in the web interface.
+
+
+
 
 
 Upgrade
